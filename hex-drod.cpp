@@ -20,11 +20,14 @@ bool hexDrod::startup () {
 }
 
 void hexDrod::shutdown () {
-    SDL_FreeSurface(displaySurface);
     SDL_Quit();
     running = false;
 }
 
-void hexDrod::loopStep () {}
+void hexDrod::loopStep () {
+    //
+}
 
-void hexDrod::render () {}
+void hexDrod::render () {
+    //
+}

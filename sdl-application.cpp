@@ -31,9 +31,6 @@ void sdlApplication::handleEvent (SDL_Event* e) {
         case SDL_KEYDOWN:
             eventKeyDown(e->key.keysym.sym, e->key.keysym.unicode);
             break;
-        case SDL_KEYUP:
-            eventKeyUp(e->key.keysym.sym, e->key.keysym.unicode);
-            break;
         case SDL_MOUSEBUTTONDOWN:
             switch (e->button.button) {
                 case SDL_BUTTON_LEFT:
@@ -95,6 +92,8 @@ void sdlApplication::handleEvent (SDL_Event* e) {
         case SDL_QUIT:
             running = false;
             break;
+        case SDL_KEYUP:
+            // We don't currently care to track key-up events.
         case SDL_JOYAXISMOTION:
         case SDL_JOYBALLMOTION:
         case SDL_JOYHATMOTION:
@@ -103,7 +102,7 @@ void sdlApplication::handleEvent (SDL_Event* e) {
             // I don't think there are many people who want to play DROD using a
             // joystick. Anyway, even if they do, we do not currently support that.
         case SDL_VIDEORESIZE:
-            // We do not implement resizing of the window at present.
+            // We do not currently implement user resizing of the window.
         case SDL_VIDEOEXPOSE:
             // No special action to be taken on exposure of window regions.
         case SDL_SYSWMEVENT:
