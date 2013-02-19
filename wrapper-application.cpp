@@ -23,6 +23,7 @@ int wrapperApplication::run () {
         hd->loopStep();
         hd->render(displaySurface);
     }
+    shutdown();
     return 0;
 }
 

@@ -1,15 +1,15 @@
 # depslib dependency file v1.0
-1361256613 source:d:\docs\programs\cplusplus\sdl\hex-drod\hex-drod.cpp
+1361263268 source:d:\docs\programs\cplusplus\sdl\hex-drod\hex-drod.cpp
 	"hex-drod.h"
 
-1361256613 d:\docs\programs\cplusplus\sdl\hex-drod\hex-drod.h
+1361263364 d:\docs\programs\cplusplus\sdl\hex-drod\hex-drod.h
 	<SDL.h>
 	"configuration-messages.h"
 	"application-constants.h"
 	"graphics-constants.h"
 	"gameplay-constants.h"
 
-1361181557 source:d:\docs\programs\cplusplus\sdl\hex-drod\main.cpp
+1361266135 source:d:\docs\programs\cplusplus\sdl\hex-drod\main.cpp
 	"wrapper-application.h"
 
 1361255583 d:\docs\programs\cplusplus\sdl\hex-drod\wrapper-application.h

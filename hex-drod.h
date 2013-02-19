@@ -37,5 +37,4 @@
             screenData getDesiredScreenData ();
             keyRepeatData getDesiredKeyRepeatData ();
     };
-
 #endif
