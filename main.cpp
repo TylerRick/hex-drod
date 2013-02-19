@@ -1,7 +1,6 @@
-#include "wrapper-application.h"
+#include "hex-drod.h"
 
 int main (int argc, char* argv []) {
-    hexDrod hd = hexDrod();
-    wrapperApplication wa(&hd);
-    return wa.run();
+    hexDrod hd;
+    return hd.run();
 }

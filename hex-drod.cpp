@@ -1,25 +1,30 @@
 #include "hex-drod.h"
 
-hexDrod::hexDrod () {}
+hexDrod::hexDrod (): mode(APPLICATION_MODE_INGAME) {}
 
 bool hexDrod::startup () {
+    if (SDL_Init(MY_SDL_INIT_FLAGS) < 0) {
+        return false;
+    }
+    displaySurface = SDL_SetVideoMode (
+        myScreenData.width, myScreenData.height, 32, myScreenData.flags
+    );
+    if (displaySurface == NULL) {
+        return false;
+    }
+    SDL_EnableKeyRepeat (
+        myKeyRepeatData.getWaitInSDLFormat(),
+        myKeyRepeatData.getRateInSDLFormat()
+    );
     return true;
 }
 
-void hexDrod::shutdown () {}
+void hexDrod::shutdown () {
+    SDL_FreeSurface(displaySurface);
+    SDL_Quit();
+    running = false;
+}
 
 void hexDrod::loopStep () {}
 
-void hexDrod::render (SDL_Surface* s) {}
-
-screenData hexDrod::getDesiredScreenData () {
-    return screenData (
-        DEFAULT_DISPLAY_WIDTH,
-        DEFAULT_DISPLAY_HEIGHT,
-        DEFAULT_SDL_DISPLAY_MODE_FLAGS
-    );
-}
-
-keyRepeatData hexDrod::getDesiredKeyRepeatData () {
-    return keyRepeatData(DEFAULT_KEY_REPEAT_WAIT, DEFAULT_KEY_REPEAT_RATE);
-}
+void hexDrod::render () {}
