@@ -1,0 +1,43 @@
+# depslib dependency file v1.0
+1361256613 source:d:\docs\programs\cplusplus\sdl\hex-drod\hex-drod.cpp
+	"hex-drod.h"
+
+1361256613 d:\docs\programs\cplusplus\sdl\hex-drod\hex-drod.h
+	<SDL.h>
+	"configuration-messages.h"
+	"application-constants.h"
+	"graphics-constants.h"
+	"gameplay-constants.h"
+
+1361181557 source:d:\docs\programs\cplusplus\sdl\hex-drod\main.cpp
+	"wrapper-application.h"
+
+1361255583 d:\docs\programs\cplusplus\sdl\hex-drod\wrapper-application.h
+	<SDL.h>
+	"hex-drod.h"
+
+1361256093 d:\docs\programs\cplusplus\sdl\hex-drod\configuration-messages.h
+	<SDL.h>
+
+1361255583 d:\docs\programs\cplusplus\sdl\hex-drod\gameplay-constants.h
+
+1361256110 source:d:\docs\programs\cplusplus\sdl\hex-drod\configuration-messages.cpp
+	"configuration-messages.h"
+	"mathematics-functions.h"
+
+1361255583 d:\docs\programs\cplusplus\sdl\hex-drod\mathematics-functions.h
+
+1361255583 source:d:\docs\programs\cplusplus\sdl\hex-drod\hex-drod-event-handlers.cpp
+	"hex-drod.h"
+
+1361256515 d:\docs\programs\cplusplus\sdl\hex-drod\graphics-constants.h
+
+1361255583 source:d:\docs\programs\cplusplus\sdl\hex-drod\mathematics-functions.cpp
+	"mathematics-functions.h"
+	"math.h"
+
+1361253432 d:\docs\programs\cplusplus\sdl\hex-drod\application-constants.h
+
+1361256452 source:d:\docs\programs\cplusplus\sdl\hex-drod\wrapper-application.cpp
+	"wrapper-application.h"
+
