@@ -5,10 +5,8 @@
     #include "application-constants.h"
 
     class hexDrod: public sdlApplication {
-        private:
+        protected:
             int mode;
-        public:
-            hexDrod ();
             virtual bool startup ();
             virtual void shutdown ();
             virtual void loopStep ();
@@ -33,5 +31,7 @@
             virtual void eventMouseWheelDown (int x, int y);
             virtual void eventKeyDown (SDLKey sym, Uint16 codepoint);
             virtual void eventKeyUp (SDLKey sym, Uint16 codepoint);
+        public:
+            hexDrod ();
     };
 #endif
