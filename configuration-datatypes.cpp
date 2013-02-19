@@ -1,5 +1,4 @@
 #include "configuration-datatypes.h"
-#include "mathematics-functions.h"
 
 screenData::screenData (int w, int h, Uint32 f):
     width(w), height(h), flags(f) {}

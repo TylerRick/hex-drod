@@ -1,7 +1,6 @@
 #ifndef HEX_DROD_H
     #define HEX_DROD_H
 
-    #include <SDL.h>
     #include "sdl-application.h"
     #include "application-constants.h"
 

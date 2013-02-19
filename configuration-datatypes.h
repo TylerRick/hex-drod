@@ -2,6 +2,7 @@
     #define CONFIGURATION_DATATYPES_H
 
     #include <SDL.h>
+    #include "mathematics-functions.h"
 
     class screenData {
         public:
