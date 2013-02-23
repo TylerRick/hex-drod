@@ -1,32 +1,32 @@
 #include "hex-drod.h"
 
 void hexDrod::eventMouseMove (
-    int absX, int absY, int relX, int relY,
-    bool LButtonDown, bool MButtonDown, bool RButtonDown
+    int const absX, int const absY, int const relX, int const relY,
+    bool const LButtonDown, bool const RButtonDown
 ) {
     //
 }
 
-void hexDrod::eventMouseLButtonDown (int x, int y) {
+void hexDrod::eventMouseLButtonDown (int const x, int const y) {
     //
 }
 
-void hexDrod::eventMouseLButtonUp (int x, int y) {
+void hexDrod::eventMouseLButtonUp (int const x, int const y) {
     //
 }
 
-void hexDrod::eventMouseRButtonDown (int x, int y) {
+void hexDrod::eventMouseRButtonDown (int const x, int const y) {
     //
 }
 
-void hexDrod::eventMouseRButtonUp (int x, int y) {
+void hexDrod::eventMouseRButtonUp (int const x, int const y) {
     //
 }
 
-void hexDrod::eventMouseWheelUp (int x, int y) {
+void hexDrod::eventMouseWheelUp (int const x, int const y) {
     //
 }
 
-void hexDrod::eventMouseWheelDown (int x, int y) {
+void hexDrod::eventMouseWheelDown (int const x, int const y) {
     //
 }

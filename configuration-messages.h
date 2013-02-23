@@ -1,12 +1,11 @@
-#ifndef CONFIGURATION_DATATYPES_H
-    #define CONFIGURATION_DATATYPES_H
+#ifndef CONFIGURATION_MESSAGES_H
+    #define CONFIGURATION_MESSAGES_H
 
     #include <SDL.h>
-    #include "mathematics-functions.h"
 
     class screenData {
         public:
-            screenData (int const w, int const h, Uint32 const f);
+            screenData (int w, int h, Uint32 f);
             int width;
             int height;
             Uint32 flags;
@@ -14,11 +13,11 @@
 
     class keyRepeatData {
         public:
-            keyRepeatData (int const w, int const r);
+            keyRepeatData (int w, int r);
             int wait; // Desired wait, in tenths of a second
             int rate; // Desired number of repeats per second
-            int getWaitInSDLFormat () const;
-            int getRateInSDLFormat () const;
+            int getWaitInSDLFormat ();
+            int getRateInSDLFormat ();
     };
 
 #endif

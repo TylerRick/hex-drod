@@ -1,6 +1,6 @@
 #include "hex-drod.h"
 
-void hexDrod::eventKeyDown (SDLKey sym, Uint16 codepoint) {
+void hexDrod::eventKeyDown (SDLKey const sym, Uint16 const codepoint) {
     //
 }
 

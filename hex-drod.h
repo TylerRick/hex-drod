@@ -12,16 +12,16 @@
             virtual void loopStep ();
             virtual void render ();
             virtual void eventMouseMove (
-                int absX, int absY, int relX, int relY,
-                bool LButtonDown, bool MButtonDown, bool RButtonDown
+                int const absX, int const absY, int const relX, int const relY,
+                bool const LButtonDown, bool const RButtonDown
             );
-            virtual void eventMouseLButtonDown (int x, int y);
-            virtual void eventMouseLButtonUp (int x, int y);
-            virtual void eventMouseRButtonDown (int x, int y);
-            virtual void eventMouseRButtonUp (int x, int y);
-            virtual void eventMouseWheelUp (int x, int y);
-            virtual void eventMouseWheelDown (int x, int y);
-            virtual void eventKeyDown (SDLKey sym, Uint16 codepoint);
+            virtual void eventMouseLButtonDown (int const x, int const y);
+            virtual void eventMouseLButtonUp (int const x, int const y);
+            virtual void eventMouseRButtonDown (int const x, int const y);
+            virtual void eventMouseRButtonUp (int const x, int const y);
+            virtual void eventMouseWheelUp (int const x, int const y);
+            virtual void eventMouseWheelDown (int const x, int const y);
+            virtual void eventKeyDown (SDLKey const sym, Uint16 const codepoint);
             virtual void eventMinimise ();
             virtual void eventRestore ();
         public:

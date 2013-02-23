@@ -9,25 +9,25 @@
     class sdlApplication {
         protected:
             bool running;
-            SDL_Surface* displaySurface;
+            SDL_Surface * displaySurface;
             screenData myScreenData;
             keyRepeatData myKeyRepeatData;
-            void handleEvent (SDL_Event* Event);
+            void handleEvent (SDL_Event const * const Event);
             virtual bool startup () = 0;
             virtual void shutdown () = 0;
             virtual void loopStep () = 0;
             virtual void render () = 0;
             virtual void eventMouseMove (
-                int absX, int absY, int relX, int relY,
-                bool LButtonDown, bool MButtonDown, bool RButtonDown
+                int const absX, int const absY, int const relX, int const relY,
+                bool const LButtonDown, bool const RButtonDown
             ) = 0;
-            virtual void eventMouseLButtonDown (int x, int y) = 0;
-            virtual void eventMouseLButtonUp (int x, int y) = 0;
-            virtual void eventMouseRButtonDown (int x, int y) = 0;
-            virtual void eventMouseRButtonUp (int x, int y) = 0;
-            virtual void eventMouseWheelUp (int x, int y) = 0;
-            virtual void eventMouseWheelDown (int x, int y) = 0;
-            virtual void eventKeyDown (SDLKey sym, Uint16 codepoint) = 0;
+            virtual void eventMouseLButtonDown (int const x, int const y) = 0;
+            virtual void eventMouseLButtonUp (int const x, int const y) = 0;
+            virtual void eventMouseRButtonDown (int const x, int const y) = 0;
+            virtual void eventMouseRButtonUp (int const x, int const y) = 0;
+            virtual void eventMouseWheelUp (int const x, int const y) = 0;
+            virtual void eventMouseWheelDown (int const x, int const y) = 0;
+            virtual void eventKeyDown (SDLKey const sym, Uint16 const codepoint) = 0;
             virtual void eventMinimise () = 0;
             virtual void eventRestore () = 0;
         public:

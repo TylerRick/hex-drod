@@ -1,15 +1,15 @@
 #include "configuration-datatypes.h"
 
-screenData::screenData (int w, int h, Uint32 f):
+screenData::screenData (int const w, int const h, Uint32 const f):
     width(w), height(h), flags(f) {}
 
-keyRepeatData::keyRepeatData (int w, int r):
+keyRepeatData::keyRepeatData (int const w, int const r):
     wait(w), rate(r) {}
 
-int keyRepeatData::getWaitInSDLFormat () {
-    return 100*wait;
+int keyRepeatData::getWaitInSDLFormat () const {
+    return 100 * wait;
 }
 
-int keyRepeatData::getRateInSDLFormat () {
-    return iRoundAwayFromZero(1000.0 / rate);
+int keyRepeatData::getRateInSDLFormat () const {
+    return iRound(1000.0 / rate);
 }

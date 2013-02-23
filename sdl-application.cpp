@@ -26,7 +26,7 @@ int sdlApplication::run () {
     return 0;
 }
 
-void sdlApplication::handleEvent (SDL_Event* e) {
+void sdlApplication::handleEvent (SDL_Event const * const e) {
     switch (e->type) {
         case SDL_KEYDOWN:
             eventKeyDown(e->key.keysym.sym, e->key.keysym.unicode);
@@ -75,7 +75,6 @@ void sdlApplication::handleEvent (SDL_Event* e) {
                 e->motion.xrel,
                 e->motion.yrel,
                 (e->motion.state & SDL_BUTTON(SDL_BUTTON_LEFT)) != 0,
-                (e->motion.state & SDL_BUTTON(SDL_BUTTON_MIDDLE)) != 0,
                 (e->motion.state & SDL_BUTTON(SDL_BUTTON_RIGHT)) != 0
             );
             break;
