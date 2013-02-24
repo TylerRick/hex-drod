@@ -3,22 +3,19 @@
 hexCoordinateSystem::hexCoordinateSystem (int const x, int const y):
     originX(x), originY(y) {}
 
-hexCoordinateSystem hexCoordinateSystem::of (hexCoordinate const h) {
-    return *(h.getHexCoordinateSystem());
+hexCoordinateSystem hexCoordinateSystem::of (hex const h) {
+    return *(h.getCoordinateSystem());
 }
 
-hexCoordinateSystem hexCoordinateSystem::fromOrigin
-    (hexCoordinate const h) {
+hexCoordinateSystem hexCoordinateSystem::fromOrigin (hex const h) {
     return hexCoordinateSystem(h.getGlobalXCoord(), h.getGlobalYCoord());
 }
 
-hexCoordinateSystem hexCoordinateSystem::fromOriginGlobal
-    (int const x, int const y) {
+hexCoordinateSystem hexCoordinateSystem::fromOriginGlobal (int const x, int const y) {
     return hexCoordinateSystem(x, y);
 }
 
-hexCoordinateSystem hexCoordinateSystem::fromOriginLocal
-    (int const x, int const y) const {
+hexCoordinateSystem hexCoordinateSystem::fromOriginLocal (int const x, int const y) const {
     return hexCoordinateSystem(x + originX, y + originY);
 }
 
@@ -42,50 +39,43 @@ bool hexCoordinateSystem::isGlobal () const {
     return originX == 0 && originY == 0;
 }
 
-hexCoordinate hexCoordinateSystem::localised (hexCoordinate const h) const {
-    return hexCoordinate (
-        h.getGlobalXCoord() - originX,
-        h.getGlobalYCoord() - originY,
-        this
-    );
+hex hexCoordinateSystem::localised (hex const h) const {
+    return hex (h.getGlobalXCoord() - originX, h.getGlobalYCoord() - originY, this);
 }
 
-hexCoordinate hexCoordinateSystem::localHexCoordinateFromGlobal
-    (int const x, int const y) {
-    return hexCoordinate(x - originX, y - originY, this);
+hex hexCoordinateSystem::localHexFromGlobal (int const x, int const y) {
+    return hex(x - originX, y - originY, this);
 }
 
-hexCoordinate hexCoordinateSystem::localHexCoordinateFromLocal
-    (int const x, int const y) {
-    return hexCoordinate(x, y, this);
+hex hexCoordinateSystem::localHexFromLocal (int const x, int const y) {
+    return hex(x, y, this);
 }
 
-hexCoordinate hexCoordinateSystem::globalHexCoordinateFromLocal
-    (int const x, int const y) {
-    return hexCoordinate(x + originX, y + originY, &globalHexCoordinateSystem);
+hex hexCoordinateSystem::globalHexCoordinateFromLocal (int const x, int const y) {
+    return hex(x + originX, y + originY, &globalHexCoordinateSystem);
 }
 
-int hexCoordinateSystem::localXCoord (hexCoordinate const h) const {
+int hexCoordinateSystem::localXCoord (hex const h) const {
     return h.getGlobalXCoord() - originX;
 }
 
-int hexCoordinateSystem::localYCoord (hexCoordinate const h) const {
+int hexCoordinateSystem::localYCoord (hex const h) const {
     return h.getGlobalYCoord() - originY;
 }
 
-int hexCoordinateSystem::localZCoord (hexCoordinate const h) const {
+int hexCoordinateSystem::localZCoord (hex const h) const {
     return zCoord(localXCoord(h), localYCoord(h));
 }
 
-int hexCoordinateSystem::localACoord (hexCoordinate const h) const {
+int hexCoordinateSystem::localACoord (hex const h) const {
     return aCoord(localXCoord(h), localYCoord(h));
 }
 
-int hexCoordinateSystem::localBCoord (hexCoordinate const h) const {
+int hexCoordinateSystem::localBCoord (hex const h) const {
     return bCoord(localXCoord(h), localYCoord(h));
 }
 
-int hexCoordinateSystem::localCCoord (hexCoordinate const h) const {
+int hexCoordinateSystem::localCCoord (hex const h) const {
     return cCoord(localXCoord(h), localYCoord(h));
 }
 

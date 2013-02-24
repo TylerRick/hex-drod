@@ -1,151 +1,150 @@
 #include "hex-coordinate-system.h"
 
-hexCoordinate::hexCoordinate ():
+hex::hex ():
     xCoord(0), yCoord(0), coordinateSystem(&globalHexCoordinateSystem) {}
 
-hexCoordinate::hexCoordinate (int const x, int const y):
+hex::hex (int const x, int const y):
     xCoord(x), yCoord(y), coordinateSystem(&globalHexCoordinateSystem) {}
 
-hexCoordinate::hexCoordinate (hexCoordinateSystem const * const hcs):
+hex::hex (hexCoordinateSystem const * const hcs):
     xCoord(0), yCoord(0), coordinateSystem(hcs) {}
 
-hexCoordinate::hexCoordinate
-    (int const x, int const y, hexCoordinateSystem const * const hcs):
+hex::hex (int const x, int const y, hexCoordinateSystem const * const hcs):
     xCoord(x), yCoord(y), coordinateSystem(hcs) {}
 
-hexCoordinateSystem const * hexCoordinate::getHexCoordinateSystem () const {
+hexCoordinateSystem const * hex::getCoordinateSystem () const {
     return coordinateSystem;
 }
 
-bool hexCoordinate::coordinateSystemIsGlobal () const {
+bool hex::coordinateSystemIsGlobal () const {
     return coordinateSystem->isGlobal();
 }
 
-int hexCoordinate::getXCoord () const {
+int hex::getXCoord () const {
     return xCoord;
 }
 
-int hexCoordinate::getYCoord () const {
+int hex::getYCoord () const {
     return yCoord;
 }
 
-int hexCoordinate::getZCoord () const {
+int hex::getZCoord () const {
     return zCoord(xCoord, yCoord);
 }
 
-int hexCoordinate::getACoord () const {
+int hex::getACoord () const {
     return aCoord(xCoord, yCoord);
 }
 
-int hexCoordinate::getBCoord () const {
+int hex::getBCoord () const {
     return bCoord(xCoord, yCoord);
 }
 
-int hexCoordinate::getCCoord () const {
+int hex::getCCoord () const {
     return cCoord(xCoord, yCoord);
 }
 
-int hexCoordinate::getGlobalXCoord () const {
+int hex::getGlobalXCoord () const {
     return coordinateSystem->globalXCoordFromLocal(xCoord);
 }
 
-int hexCoordinate::getGlobalYCoord () const {
+int hex::getGlobalYCoord () const {
     return coordinateSystem->globalYCoordFromLocal(yCoord);
 }
 
-int hexCoordinate::getGlobalZCoord () const {
+int hex::getGlobalZCoord () const {
     return zCoord(getGlobalXCoord(), getGlobalYCoord());
 }
 
-int hexCoordinate::getGlobalACoord () const {
+int hex::getGlobalACoord () const {
     return aCoord(getGlobalXCoord(), getGlobalYCoord());
 }
 
-int hexCoordinate::getGlobalBCoord () const {
+int hex::getGlobalBCoord () const {
     return bCoord(getGlobalXCoord(), getGlobalYCoord());
 }
 
-int hexCoordinate::getGlobalCCoord () const {
+int hex::getGlobalCCoord () const {
     return cCoord(getGlobalXCoord(), getGlobalYCoord());
 }
 
-int hexCoordinate::getXCoordIn (hexCoordinateSystem const hcs) const {
+int hex::getXCoordIn (hexCoordinateSystem const hcs) const {
     return hcs.localXCoordFromGlobal(getGlobalXCoord());
 }
 
-int hexCoordinate::getYCoordIn (hexCoordinateSystem const hcs) const {
+int hex::getYCoordIn (hexCoordinateSystem const hcs) const {
     return hcs.localYCoordFromGlobal(getGlobalYCoord());
 }
 
-int hexCoordinate::getZCoordIn (hexCoordinateSystem const hcs) const {
+int hex::getZCoordIn (hexCoordinateSystem const hcs) const {
     return zCoord(getXCoordIn(hcs), getYCoordIn(hcs));
 }
 
-int hexCoordinate::getACoordIn (hexCoordinateSystem const hcs) const {
+int hex::getACoordIn (hexCoordinateSystem const hcs) const {
     return aCoord(getXCoordIn(hcs), getYCoordIn(hcs));
 }
 
-int hexCoordinate::getBCoordIn (hexCoordinateSystem const hcs) const {
+int hex::getBCoordIn (hexCoordinateSystem const hcs) const {
     return bCoord(getXCoordIn(hcs), getYCoordIn(hcs));
 }
 
-int hexCoordinate::getCCoordIn (hexCoordinateSystem const hcs) const {
+int hex::getCCoordIn (hexCoordinateSystem const hcs) const {
     return cCoord(getXCoordIn(hcs), getYCoordIn(hcs));
 }
 
-bool hexCoordinate::isDark () const {
+bool hex::isDark () const {
     return darkHex(getGlobalACoord());
 }
 
-void hexCoordinate::setHexCoordinateSystem (hexCoordinateSystem const * const hcs) {
+void hex::setCoordinateSystem (hexCoordinateSystem const * const hcs) {
     xCoord = getXCoordIn(*hcs);
     yCoord = getYCoordIn(*hcs);
-    setHexCoordinateSystemNaive(hcs);
+    setCoordinateSystemNaive(hcs);
 }
 
-void hexCoordinate::setHexCoordinateSystemNaive (hexCoordinateSystem const * const hcs) {
+void hex::setCoordinateSystemNaive (hexCoordinateSystem const * const hcs) {
     coordinateSystem = hcs;
 }
 
-void hexCoordinate::setXCoord (int const x) {
+void hex::setXCoord (int const x) {
     xCoord = x;
 }
 
-void hexCoordinate::setYCoord (int const y) {
+void hex::setYCoord (int const y) {
     yCoord = y;
 }
 
-void hexCoordinate::moveToLocal (int const x, int const y) {
+void hex::moveToLocal (int const x, int const y) {
     setXCoord(x);
     setYCoord(y);
 }
 
-void hexCoordinate::moveToGlobal (int const x, int const y) {
+void hex::moveToGlobal (int const x, int const y) {
     setXCoord(coordinateSystem->localXCoordFromGlobal(x));
     setYCoord(coordinateSystem->localYCoordFromGlobal(y));
 }
 
-void hexCoordinate::moveTo (hexCoordinate const hc) {
-    setXCoord(hc.getXCoordIn(*coordinateSystem));
-    setYCoord(hc.getYCoordIn(*coordinateSystem));
+void hex::moveTo (hexCoordinate const h) {
+    setXCoord(h.getXCoordIn(*coordinateSystem));
+    setYCoord(h.getYCoordIn(*coordinateSystem));
 }
 
-void hexCoordinate::moveToNaive (hexCoordinate const hc) {
-    setXCoord(hc.xCoord);
-    setYCoord(hc.yCoord);
+void hex::moveToNaive (hex const h) {
+    setXCoord(h.xCoord);
+    setYCoord(h.yCoord);
 }
 
-void hexCoordinate::moveThrough (int const x, int const y) {
+void hex::moveThrough (int const x, int const y) {
     setXCoord(xCoord + x);
     setYCoord(yCoord + y);
 }
 
-void hexCoordinate::moveThrough (hexCoordinate const hc) {
-    setXCoord(xCoord + hc.getGlobalXCoord());
-    setYCoord(yCoord + hc.getGlobalYCoord());
+void hex::moveThrough (hex const h) {
+    setXCoord(xCoord + h.getGlobalXCoord());
+    setYCoord(yCoord + h.getGlobalYCoord());
 }
 
-void hexCoordinate::moveThroughNaive (hexCoordinate const hc) {
-    setXCoord(xCoord + hc.xCoord);
-    setYCoord(yCoord + hc.yCoord);
+void hex::moveThroughNaive (hex const h) {
+    setXCoord(xCoord + h.xCoord);
+    setYCoord(yCoord + h.yCoord);
 }
