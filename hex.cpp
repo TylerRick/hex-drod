@@ -124,7 +124,7 @@ void hex::moveToGlobal (int const x, int const y) {
     setYCoord(coordinateSystem->localYCoordFromGlobal(y));
 }
 
-void hex::moveTo (hexCoordinate const h) {
+void hex::moveTo (hex const h) {
     setXCoord(h.getXCoordIn(*coordinateSystem));
     setYCoord(h.getYCoordIn(*coordinateSystem));
 }

@@ -51,7 +51,7 @@ hex hexCoordinateSystem::localHexFromLocal (int const x, int const y) {
     return hex(x, y, this);
 }
 
-hex hexCoordinateSystem::globalHexCoordinateFromLocal (int const x, int const y) {
+hex hexCoordinateSystem::globalHexFromLocal (int const x, int const y) {
     return hex(x + originX, y + originY, &globalHexCoordinateSystem);
 }
 
