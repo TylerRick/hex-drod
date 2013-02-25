@@ -4,6 +4,11 @@
     #include <SDL.h>
     #include "mathematics-functions.h"
 
+    #define DEFAULT_KEY_REPEAT_WAIT 5
+    #define DEFAULT_KEY_REPEAT_RATE 10
+    #define MAXIMUM_KEY_REPEAT_WAIT 30
+    #define MAXIMUM_KEY_REPEAT_RATE 25
+
     class screenData {
         public:
             screenData (int const w, int const h, Uint32 const f);
@@ -20,5 +25,4 @@
             int getWaitInSDLFormat () const;
             int getRateInSDLFormat () const;
     };
-
 #endif
