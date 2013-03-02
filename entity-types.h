@@ -19,7 +19,7 @@
     #define ENTITY_WATERSKIPPER_NEST    15
     #define ENTITY_SEEP                 16
     #define ENTITY_AUMTLICH             17
-    #define ENTITY_GUARD                18
+    #define ENTITY_HOSTILE_SWORDSMAN    18
     #define ENTITY_SLAYER               19
     #define ENTITY_RATTLESNAKE          20
     #define ENTITY_ADDER                21
@@ -31,7 +31,7 @@
     #define ENTITY_BRAIN                27
     #define ENTITY_FEGUNDO              28
     #define ENTITY_ASHES                29
-    #define ENTITY_STALWART             30
+    #define ENTITY_ALLIED_SWORDSMAN     30
     #define ENTITY_WUBBA                31
     #define ENTITY_CITIZEN              32
     #define ENTITY_DECOY                33
@@ -54,4 +54,6 @@
     #define ENTITY_SPEED_POTION         50
     #define ENTITY_MIMIC_POTION         51
     #define ENTITY_DECOY_POTION         52
+    #define ENTITY_CLONE_HORN           53
+    #define ENTITY_ALLY_HORN            54
 #endif
