@@ -18,16 +18,6 @@
         // to perform rounding may give inaccurate results for floats that are
         // very large in absolute value.
 
-    int zCoord (int const x, int const y);
-    int aCoord (int const x, int const y);
-    int bCoord (int const x, int const y);
-    int cCoord (int const x, int const y);
-        // Supply (x, y)-coordinates and get the corresponding z-, a-, b- or
-        // c-coordinate (with respect to the same hexCoordinateSystem).
-
-    bool darkHex (int const a);
-        // Determine whether the supplied global a-coordinate is that of a dark hex.
-
     bool forceArrowPermitsMovement (int const forceArrowDirection, int const movementDirection);
     bool stepBlockerPermitsMovement (int const stepBlockerTypes, int const movementDirection);
         // These functions perform unchecked array dereferencing (against

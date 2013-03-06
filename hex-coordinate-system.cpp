@@ -64,19 +64,19 @@ int hexCoordinateSystem::localYCoord (hex const h) const {
 }
 
 int hexCoordinateSystem::localZCoord (hex const h) const {
-    return zCoord(localXCoord(h), localYCoord(h));
+    return coords::xytoz(localXCoord(h), localYCoord(h));
 }
 
 int hexCoordinateSystem::localACoord (hex const h) const {
-    return aCoord(localXCoord(h), localYCoord(h));
+    return coords::xytoa(localXCoord(h), localYCoord(h));
 }
 
 int hexCoordinateSystem::localBCoord (hex const h) const {
-    return bCoord(localXCoord(h), localYCoord(h));
+    return coords::xytob(localXCoord(h), localYCoord(h));
 }
 
 int hexCoordinateSystem::localCCoord (hex const h) const {
-    return cCoord(localXCoord(h), localYCoord(h));
+    return coords::xytoc(localXCoord(h), localYCoord(h));
 }
 
 int hexCoordinateSystem::globalXCoordFromLocal (int const x) const {
@@ -88,19 +88,19 @@ int hexCoordinateSystem::globalYCoordFromLocal (int const y) const {
 }
 
 int hexCoordinateSystem::globalZCoordFromLocal (int const x, int const y) const {
-    return zCoord(globalXCoordFromLocal(x), globalYCoordFromLocal(y));
+    return coords::xytoz(globalXCoordFromLocal(x), globalYCoordFromLocal(y));
 }
 
 int hexCoordinateSystem::globalACoordFromLocal (int const x, int const y) const {
-    return aCoord(globalXCoordFromLocal(x), globalYCoordFromLocal(y));
+    return coords::xytoa(globalXCoordFromLocal(x), globalYCoordFromLocal(y));
 }
 
 int hexCoordinateSystem::globalBCoordFromLocal (int const x, int const y) const {
-    return bCoord(globalXCoordFromLocal(x), globalYCoordFromLocal(y));
+    return coords::xytob(globalXCoordFromLocal(x), globalYCoordFromLocal(y));
 }
 
 int hexCoordinateSystem::globalCCoordFromLocal (int const x, int const y) const {
-    return cCoord(globalXCoordFromLocal(x), globalYCoordFromLocal(y));
+    return coords::xytoc(globalXCoordFromLocal(x), globalYCoordFromLocal(y));
 }
 
 int hexCoordinateSystem::localXCoordFromGlobal (int const x) const {
@@ -112,27 +112,27 @@ int hexCoordinateSystem::localYCoordFromGlobal (int const y) const {
 }
 
 int hexCoordinateSystem::localZCoordFromGlobal (int const x, int const y) const {
-    return zCoord(localXCoordFromGlobal(x), localYCoordFromGlobal(y));
+    return coords::xytoz(localXCoordFromGlobal(x), localYCoordFromGlobal(y));
 }
 
 int hexCoordinateSystem::localACoordFromGlobal (int const x, int const y) const {
-    return aCoord(localXCoordFromGlobal(x), localYCoordFromGlobal(y));
+    return coords::xytoa(localXCoordFromGlobal(x), localYCoordFromGlobal(y));
 }
 
 int hexCoordinateSystem::localBCoordFromGlobal (int const x, int const y) const {
-    return bCoord(localXCoordFromGlobal(x), localYCoordFromGlobal(y));
+    return coords::xytob(localXCoordFromGlobal(x), localYCoordFromGlobal(y));
 }
 
 int hexCoordinateSystem::localCCoordFromGlobal (int const x, int const y) const {
-    return cCoord(localXCoordFromGlobal(x), localYCoordFromGlobal(y));
+    return coords::xytoc(localXCoordFromGlobal(x), localYCoordFromGlobal(y));
 }
 
 bool hexCoordinateSystem::isDarkHexFromA (int const a) const {
-    return darkHex(a + globalACoordOfOrigin());
+    return coords::darkHex(a + globalACoordOfOrigin());
 }
 
 bool hexCoordinateSystem::isDarkHexFromXY (int const x, int const y) const {
-    return darkHex(globalACoordFromLocal(x, y));
+    return coords::darkHex(globalACoordFromLocal(x, y));
 }
 
 hexCoordinateSystem const globalHexCoordinateSystem =

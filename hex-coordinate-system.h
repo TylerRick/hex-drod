@@ -1,7 +1,7 @@
 #ifndef HEX_COORDINATE_SYSTEM_H
     #define HEX_COORDINATE_SYSTEM_H
 
-    #include "mathematics-functions.h"
+    #include "coords.h"
     #include "hex.h"
 
     class hexCoordinateSystem {

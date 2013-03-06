@@ -29,19 +29,19 @@ int hex::getYCoord () const {
 }
 
 int hex::getZCoord () const {
-    return zCoord(xCoord, yCoord);
+    return coords::xytoz(xCoord, yCoord);
 }
 
 int hex::getACoord () const {
-    return aCoord(xCoord, yCoord);
+    return coords::xytoa(xCoord, yCoord);
 }
 
 int hex::getBCoord () const {
-    return bCoord(xCoord, yCoord);
+    return coords::xytob(xCoord, yCoord);
 }
 
 int hex::getCCoord () const {
-    return cCoord(xCoord, yCoord);
+    return coords::xytoc(xCoord, yCoord);
 }
 
 int hex::getGlobalXCoord () const {
@@ -53,19 +53,19 @@ int hex::getGlobalYCoord () const {
 }
 
 int hex::getGlobalZCoord () const {
-    return zCoord(getGlobalXCoord(), getGlobalYCoord());
+    return coords::xytoz(getGlobalXCoord(), getGlobalYCoord());
 }
 
 int hex::getGlobalACoord () const {
-    return aCoord(getGlobalXCoord(), getGlobalYCoord());
+    return coords::xytoa(getGlobalXCoord(), getGlobalYCoord());
 }
 
 int hex::getGlobalBCoord () const {
-    return bCoord(getGlobalXCoord(), getGlobalYCoord());
+    return coords::xytob(getGlobalXCoord(), getGlobalYCoord());
 }
 
 int hex::getGlobalCCoord () const {
-    return cCoord(getGlobalXCoord(), getGlobalYCoord());
+    return coords::xytoc(getGlobalXCoord(), getGlobalYCoord());
 }
 
 int hex::getXCoordIn (hexCoordinateSystem const hcs) const {
@@ -77,23 +77,23 @@ int hex::getYCoordIn (hexCoordinateSystem const hcs) const {
 }
 
 int hex::getZCoordIn (hexCoordinateSystem const hcs) const {
-    return zCoord(getXCoordIn(hcs), getYCoordIn(hcs));
+    return coords::xytoz(getXCoordIn(hcs), getYCoordIn(hcs));
 }
 
 int hex::getACoordIn (hexCoordinateSystem const hcs) const {
-    return aCoord(getXCoordIn(hcs), getYCoordIn(hcs));
+    return coords::xytoa(getXCoordIn(hcs), getYCoordIn(hcs));
 }
 
 int hex::getBCoordIn (hexCoordinateSystem const hcs) const {
-    return bCoord(getXCoordIn(hcs), getYCoordIn(hcs));
+    return coords::xytob(getXCoordIn(hcs), getYCoordIn(hcs));
 }
 
 int hex::getCCoordIn (hexCoordinateSystem const hcs) const {
-    return cCoord(getXCoordIn(hcs), getYCoordIn(hcs));
+    return coords::xytoc(getXCoordIn(hcs), getYCoordIn(hcs));
 }
 
 bool hex::isDark () const {
-    return darkHex(getGlobalACoord());
+    return coords::darkHex(getGlobalACoord());
 }
 
 void hex::setCoordinateSystem (hexCoordinateSystem const * const hcs) {
