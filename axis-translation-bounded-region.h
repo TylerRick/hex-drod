@@ -14,7 +14,6 @@
             coordinateRange cRange;
             bool rangesOptimised;
             mutable int hexCount;
-            mutable bool hexCountIsFresh;
         public:
             axisTranslationBoundedRegion (
                 coordinateRange const xr,
@@ -40,6 +39,9 @@
             bool xyInRegion (int const x, int const y) const;
             bool xzInRegion (int const x, int const z) const;
             bool yzInRegion (int const y, int const z) const;
+            int xRowSize (int const x) const;
+            int yRowSize (int const y) const;
+            int zRowSize (int const z) const;
             int numHexes () const;
             bool isEmpty () const;
             bool rangesAreOptimised () const;

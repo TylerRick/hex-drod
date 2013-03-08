@@ -9,7 +9,7 @@ axisTranslationBoundedRegion::axisTranslationBoundedRegion (
     coordinateRange const cr
 ): xRange(xr), yRange(yr), zRange(zr),
    aRange(ar), bRange(br), cRange(cr),
-   rangesOptimised(false), hexCount(0), hexCountIsFresh(false) {}
+   rangesOptimised(false), hexCount(-1) {}
 
 axisTranslationBoundedRegion::axisTranslationBoundedRegion (
     int const x1, int const x2,
@@ -20,7 +20,7 @@ axisTranslationBoundedRegion::axisTranslationBoundedRegion (
     int const c1, int const c2
 ): xRange(x1, x2), yRange(y1, y2), zRange(z1, z2),
    aRange(a1, a2), bRange(b1, b2), cRange(c1, c2),
-   rangesOptimised(false), hexCount(0), hexCountIsFresh(false) {}
+   rangesOptimised(false), hexCount(-1) {}
 
 axisTranslationBoundedRegion axisTranslationBoundedRegion::checked (
     int x1, int x2, int y1, int y2, int z1, int z2,
@@ -64,9 +64,12 @@ bool axisTranslationBoundedRegion::yzInRegion (int const y, int const z) const {
            cRange.inRange(coords::yztoc(y, z));
 }
 
+int xRowSize (int const x) const {
+    //
+}
+
 int axisTranslationBoundedRegion::numHexes () const {
-    if (hexCountIsFresh) {return hexCount;}
-    hexCountIsFresh = true;
+    if (hexCount >= 0) {return hexCount;}
     hexCount = 0;
     axisTranslationBoundedRegion operatingATBR =
         rangesOptimised ? *this : copyWithOptimisedRanges();
@@ -76,36 +79,33 @@ int axisTranslationBoundedRegion::numHexes () const {
     if (xRangeLength < 0 || yRangeLength < 0 || zRangeLength < 0) {
         return 0;
     }
-    int outerMin, outerMax, innerMin, innerMax;
+    int greatestRange, outerMin, outerMax, innerMin, innerMax;
     if (zRangeLength >= xRangeLength && zRangeLength >= yRangeLength) {
+        greatestRange = COORDINATE_IDENTIFIER_Z;
         outerMin = operatingATBR.xRange.getMin();
         outerMax = operatingATBR.xRange.getMax();
         innerMin = operatingATBR.yRange.getMin();
         innerMax = operatingATBR.yRange.getMax();
-        for (int i = outerMin; i <= outerMax; ++i) {
-            for (int j = innerMin; j <= innerMax; ++j) {
-                if (xyInRegion(i, j)) {++hexCount;}
-            }
-        }
     } else {
-        innerMin = operatingATBR.zRange.getMin();
-        innerMax = operatingATBR.zRange.getMax();
         if (yRangeLength >= xRangeLength && yRangeLength >= zRangeLength) {
+            greatestRange = COORDINATE_IDENTIFIER_Y;
             outerMin = operatingATBR.xRange.getMin();
             outerMax = operatingATBR.xRange.getMax();
-            for (int i = outerMin; i <= outerMax; ++i) {
-                for (int j = innerMin; j <= innerMax; ++j) {
-                    if (xzInRegion(i, j)) {++hexCount;}
-                }
-            }
         } else {
+            greatestRange = COORDINATE_IDENTIFIER_X;
             outerMin = operatingATBR.yRange.getMin();
             outerMax = operatingATBR.yRange.getMax();
-            for (int i = outerMin; i <= outerMax; ++i) {
-                for (int j = innerMin; j <= innerMax; ++j) {
-                    if (yzInRegion(i, j)) {++hexCount;}
-                }
-            }
+        }
+        innerMin = operatingATBR.zRange.getMin();
+        innerMax = operatingATBR.zRange.getMax();
+    }
+    for (int i = outerMin; i <= outerMax; ++i) {
+        for (int j = innerMin; j <= innerMax; ++j) {
+            if (
+                (greatestRange == COORDINATE_IDENTIFIER_Z && xyInRegion(i, j)) ||
+                (greatestRange == COORDINATE_IDENTIFIER_Y && xzInRegion(i, j)) ||
+                yzInRegion(i, j)
+            ) {++hexCount;}
         }
     }
     return hexCount;

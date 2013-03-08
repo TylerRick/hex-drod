@@ -3,6 +3,13 @@
 
     #include "mathematics-functions.h"
 
+    #define COORDINATE_IDENTIFIER_X 0
+    #define COORDINATE_IDENTIFIER_Y 1
+    #define COORDINATE_IDENTIFIER_Z 2
+    #define COORDINATE_IDENTIFIER_A 3
+    #define COORDINATE_IDENTIFIER_B 4
+    #define COORDINATE_IDENTIFIER_C 5
+
     namespace coords {
         int xytoz (int const x, int const y);
         int xztoy (int const x, int const z);
